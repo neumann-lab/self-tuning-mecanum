@@ -96,7 +96,9 @@ class holonomic:
             
         multiplier = 2 # SPEED MULTIPLIER
         
+        self.pid["vx"].set_setpoint(vx)
         vx = vx * self.pid["vx"].update(novapi.get_acceleration("x"))
+        self.pid["vx"].set_setpoint(vy)
         vy = vy * self.pid["vy"].update(novapi.get_acceleration("y"))
 
         # Calculation for the wheel speed
